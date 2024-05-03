@@ -35,18 +35,16 @@ export default function BlogPosts() {
 
    return (
     <>
+    {posts.length !== 0 &&
     <ul>
     {posts.map((post) => {
         console.log("postId: ", post.id)
-        return (
-            <>
-           {<li key={post.id}><Post title={post.title}/></li>}
-            </>
-           
-        
+        return (   
+           <li key={post.id}><Post title={post.title}/></li>
         )
     })}
     </ul> 
+}
     </>
    )
 
