@@ -1,0 +1,131 @@
+:root {
+  /* colors */
+  --color-primary: rgba(255, 255, 255, 0.87);
+
+  /* spacing */
+  --space-xs: 4px;
+  --space-s: 8px;
+  --space-base: 16px;
+  --space-m: 24px;
+  --space-l: 32px;
+  --space-xl: 40px
+}
+
+.display-flex {
+  display: flex
+}
+
+.justify-content-center {
+  justify-content: center
+}
+
+.login-form-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.login-form {
+  width: 50%;
+  min-width: 300px;
+  border: 2px solid var(--color-primary);
+  padding: var(--space-base);
+}
+
+.login-form div {
+  display: flex;
+  justify-content: center;
+}
+
+.input-widget {
+  display: flex;
+  margin: var(--space-base);
+  align-items: center;
+}
+
+.input-widget label {
+  width: 104px;
+}
+
+.input-widget input {
+  margin-left: var(--space-s);
+  height: var(--space-m);
+}
+/* 
+blogpost page */
+.blogposts-list ul {
+  list-style: none;
+}
+
+.blogposts-listing .contents {
+  margin-left: var(--space-base);
+}
+
+// /* loader */
+// $dot-size: 1em;
+// $duration: 3000ms;
+// $container-size: $dot-size * 10;
+// $dot-map: ( a:0, b:1, c:2, d:3, e:4, f:5, g:6, h:7);
+
+// .wrapper {
+//   width: 100vw;
+//   height: 100vh;
+//   background: whitesmoke;
+// }
+
+// .flex-center {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+// }
+
+// .container {
+//   width: $container-size;
+//   height: $container-size;
+//   position: relative;
+//   background: pink;
+//   border-radius: 50%;
+
+//   .dot {
+//     background: darkred;
+//     content: "";
+//     border-radius: $dot-size * 0.5;
+//     margin-top: $dot-size * -0.5;
+//     margin-left: auto;
+//     margin-right: auto;
+//     width: $dot-size;
+//     height: $dot-size;
+   
+//     animation-name: bounce;
+//     animation-duration: $duration;
+//     animation-iteration-count: infinite;
+//     transition-timing-function:  cubic-bezier(0, 0.99, 0, 0.1);
+//   }
+// }
+
+// .container-dot {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   left: 0;
+//   bottom: 0;
+// }
+
+// @each $dot, $i in $dot-map {
+//   .dot-#{$dot} {
+//     transform: rotate(#{-360 / length($dot-map) * $i * 0.5}deg);
+//     .dot {
+//       animation-delay: -$duration / length($dot-map) * 0.5 * $i;
+//     }
+//   }
+// }
+
+// @keyframes bounce {
+//   0%, 100%   {
+//     transform: translatey(0);
+//   }
+//   50% {
+//     transform: translatey($container-size);
+//   }
+// }

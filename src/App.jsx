@@ -4,7 +4,7 @@ import LoginForm from './components/loginForm'
 import Home from './components/home'
 import NotFound from './components/notFound'
 import BlogPosts from './components/blogPosts'
-import './App.css'
+import './App.scss'
 
 function App() {
 

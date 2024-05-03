@@ -1,8 +1,14 @@
-export default function Post({title}) {
+export default function Post({title, url, author}) {
     return (
-        <>
-        <h1>{title}</h1>
-        </>
+        <div className="blogposts-listing">
+        <h3>{title}</h3>
+        <div className="contents">
+            <div>{author}</div>
+            <div>{url}</div>
+        </div>
+        
+        
+        </div>
     )
 }
 
