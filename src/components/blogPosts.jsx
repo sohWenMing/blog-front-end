@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Post from './blogpost_widgets/post'
 import Loader from './widgets/loader'
+import localStorageUtils from '../../utils/helpers/localStorageUtils';
 
 
 export default function BlogPosts() {
@@ -19,6 +20,9 @@ export default function BlogPosts() {
                 setPosts(data.postJsonArray);
                 setUsername(data.username);
                 setDataLoaded(true);
+                const userData = localStorageUtils.getItem('userData');
+                console.log('userData: ', userData)
+
           
             }
             catch(error) {

@@ -1,6 +1,7 @@
 import InputWidget from "./widgets/inputWidget"
 import { useState , useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import localStorageUtils from "../../utils/helpers/localStorageUtils";
 import axios from 'axios'
 
 
@@ -23,6 +24,11 @@ export default function LoginForm() {
             console.log(response);
             if(response.status === 200) {
                 setisLoggedIn(true);
+                const userDataReponse = {
+                    userId: response.data.userId,
+                    username: response.data.username
+                }
+                localStorageUtils.setItem("userData", userDataReponse);
             }
         }
         catch(error) {

@@ -1,6 +1,7 @@
 :root {
   /* colors */
   --color-primary: rgba(255, 255, 255, 0.87);
+  --color-hover: #535bf2;
 
   /* spacing */
   --space-xs: 4px;
@@ -63,4 +64,21 @@ blogpost page */
 
 .blogposts-listing .contents {
   margin-left: var(--space-base);
+}
+
+.navbar {
+  height: var(--space-xl);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .logo img, .navbar .logo {
+  height: 100%;
+  border-radius: 50%;
+};
+
+.navbar .logout:hover {
+  color: var(--color-hover);
+  cursor: pointer;
 }
