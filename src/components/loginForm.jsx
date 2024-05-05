@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import localStorageUtils from "../../utils/helpers/localStorageUtils";
 import axios from 'axios'
 import baseURL from "../../utils/config";
-
-
+const isDEV = import.meta.env.DEV
 export default function LoginForm() {
     const navigate = useNavigate();
     console.log('baseURL: ', baseURL);
+    console.log('ISDEV: ', isDEV);
     async function handleSubmit(event) {
         try{
             event.preventDefault();
