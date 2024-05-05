@@ -4,8 +4,14 @@ import { useNavigate } from "react-router-dom";
 import localStorageUtils from "../../utils/helpers/localStorageUtils";
 import axios from 'axios'
 import baseURL from "../../utils/config";
+import ErrorBox from "./widgets/errorBox";
 export default function LoginForm() {
     const navigate = useNavigate();
+    
+    const [ username, setUsername ] = useState("");
+    const [password, setPassword ] = useState("");
+    const [isLoggedIn, setisLoggedIn] = useState(false);
+    const [ error, setError ] = useState(''); 
     async function handleSubmit(event) {
         try{
             event.preventDefault();
@@ -13,7 +19,7 @@ export default function LoginForm() {
             const password = form.querySelector("#input-password").value;
             const username = form.querySelector('#input-username').value;
             if(!password || !username) {
-                alert("password and username are mandatory fields");
+                setError('username and password are mandatory');
                 return;
             }
             const response = await axios.post(`${baseURL}/login`, {
@@ -23,21 +29,14 @@ export default function LoginForm() {
             console.log(response);
             if(response.status === 200) {
                 setisLoggedIn(true);
-                // const userDataReponse = {
-                //     userId: response.data.userId,
-                //     username: response.data.username
-                // }
                 localStorageUtils.setItem("userData", response.data);
             }
         }
         catch(error) {
-            console.error(error);
+            console.log(error);
+            setError(error.response.data.error ? error.response.data.error : 'An error occured. Please try again');
         }
-
     }
-    const [ username, setUsername ] = useState("");
-    const [password, setPassword ] = useState("");
-    const [isLoggedIn, setisLoggedIn] = useState(false);
 
     useEffect(() => {
         console.log("IsLogged in after action: ", isLoggedIn);
@@ -47,9 +46,20 @@ export default function LoginForm() {
 
     },[isLoggedIn, navigate])
 
+    useEffect(() => {
+        if(error !== "") {
+            setTimeout(() => {
+                setError('');
+            }, 3000);
+        }
+
+    },[error])
+
+ 
 
     
     return(
+        <>
         <div className="login-form-wrapper">
         <form className="login-form" onSubmit={handleSubmit}>
             <div className='header'>
@@ -63,5 +73,8 @@ export default function LoginForm() {
 
         </form>
         </div>
+        {error !== '' && <ErrorBox message={error}/>}
+        </>
+
     )
 }

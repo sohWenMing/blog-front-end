@@ -1,4 +1,4 @@
-/* HTML: <div class="loader"></div> */
+
 .loader-wrapper {
     width: 100vw;
     height: 100vh;
@@ -28,4 +28,25 @@
     75%   {background-position:100% 0   ,50%  100%,50%}
     82.5% {background-position:50%  0   ,0    100%,50%}
     100%  {background-position:50%  100%,0    0   ,50%}
+  }
+
+  .error-box--wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top:-10px;
+    left: 0;
+    transition: top 2s ease-in-out;
+  }
+
+  .error-box {
+    border: 2px solid var(--color-primary);
+    min-width: 60vw;
+    text-align: center;
+    background-color: var(--color-hover);
+  }
+
+  .error-box--wrapper.show {
+    top: 10px;
   }

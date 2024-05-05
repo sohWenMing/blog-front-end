@@ -12,7 +12,6 @@ export default function BlogPosts() {
     const [username, setUsername] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
 
-    
     useEffect(() => {
         async function getPosts() {
             try {
