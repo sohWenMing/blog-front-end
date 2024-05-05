@@ -19,7 +19,7 @@ export default function LoginForm() {
             const response = await axios.post(`${baseURL}/login`, {
                 username: username,
                 password: password
-            },{withCredentials: true})
+            })
             console.log(response);
             if(response.status === 200) {
                 setisLoggedIn(true);
