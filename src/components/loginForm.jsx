@@ -4,11 +4,8 @@ import { useNavigate } from "react-router-dom";
 import localStorageUtils from "../../utils/helpers/localStorageUtils";
 import axios from 'axios'
 import baseURL from "../../utils/config";
-const isDEV = import.meta.env.DEV
 export default function LoginForm() {
     const navigate = useNavigate();
-    console.log('baseURL: ', baseURL);
-    console.log('ISDEV: ', isDEV);
     async function handleSubmit(event) {
         try{
             event.preventDefault();
@@ -26,11 +23,11 @@ export default function LoginForm() {
             console.log(response);
             if(response.status === 200) {
                 setisLoggedIn(true);
-                const userDataReponse = {
-                    userId: response.data.userId,
-                    username: response.data.username
-                }
-                localStorageUtils.setItem("userData", userDataReponse);
+                // const userDataReponse = {
+                //     userId: response.data.userId,
+                //     username: response.data.username
+                // }
+                localStorageUtils.setItem("userData", response.data);
             }
         }
         catch(error) {

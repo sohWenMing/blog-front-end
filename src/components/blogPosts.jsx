@@ -6,26 +6,24 @@ import Loader from './widgets/loader'
 import localStorageUtils from '../../utils/helpers/localStorageUtils';
 import baseURL from '../../utils/config';
 
-
-
-
 export default function BlogPosts() {
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [username, setUsername] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
+
     
     useEffect(() => {
         async function getPosts() {
             try {
-                const { data } = await axios.get(`${baseURL}/api/blog`, {withCredentials: true})
-                console.log("data: ", data);
-                setPosts(data.postJsonArray);
-                setUsername(data.username);
-                setDataLoaded(true);
                 const userData = localStorageUtils.getItem('userData');
-                console.log('userData: ', userData)
-
+                setUsername(userData.username);
+                const token = userData.token;
+                const { data } = await axios.get(`${baseURL}/api/blog?token=${token}`)
+                setPosts(data.postJsonArray);
+                
+                setDataLoaded(true);
+                
           
             }
             catch(error) {
