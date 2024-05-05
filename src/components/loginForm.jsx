@@ -3,10 +3,12 @@ import { useState , useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import localStorageUtils from "../../utils/helpers/localStorageUtils";
 import axios from 'axios'
+import baseURL from "../../utils/config";
 
 
 export default function LoginForm() {
     const navigate = useNavigate();
+    console.log('baseURL: ', baseURL);
     async function handleSubmit(event) {
         try{
             event.preventDefault();
@@ -17,7 +19,7 @@ export default function LoginForm() {
                 alert("password and username are mandatory fields");
                 return;
             }
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post(`${baseURL}/login`, {
                 username: username,
                 password: password
             },{withCredentials: true})
@@ -57,7 +59,7 @@ export default function LoginForm() {
                 <h1>Login</h1>
             </div>
             <InputWidget inputType="text" inputName="username" labelText="Username" placeholderText="Enter Username" changeCallBack={setUsername}/>
-            <InputWidget inputType="text" inputName="password" labelText="Password" placeholderText="Enter Password" changeCallBack={setPassword} />
+            <InputWidget inputType="password" inputName="password" labelText="Password" placeholderText="Enter Password" changeCallBack={setPassword} />
             <div className="display-flex justify-content-center">
                 <button>Submit</button>
             </div>

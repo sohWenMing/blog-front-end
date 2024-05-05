@@ -4,6 +4,9 @@ import axios from 'axios';
 import Post from './blogpost_widgets/post'
 import Loader from './widgets/loader'
 import localStorageUtils from '../../utils/helpers/localStorageUtils';
+import baseURL from '../../utils/config';
+
+
 
 
 export default function BlogPosts() {
@@ -15,7 +18,7 @@ export default function BlogPosts() {
     useEffect(() => {
         async function getPosts() {
             try {
-                const { data } = await axios.get('http://localhost:3000/api/blog', {withCredentials: true})
+                const { data } = await axios.get(`${baseURL}/api/blog`, {withCredentials: true})
                 console.log("data: ", data);
                 setPosts(data.postJsonArray);
                 setUsername(data.username);

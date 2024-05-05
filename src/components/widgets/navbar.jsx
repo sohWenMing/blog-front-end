@@ -1,12 +1,14 @@
 import { Outlet , useNavigate } from "react-router-dom"
 import localStorageUtils from "../../../utils/helpers/localStorageUtils";
 import axios from "axios";
+import baseURL from "../../../utils/config";
+
 
 export default function Navbar() {
     const navigate = useNavigate();
     async function handleCLick() {
         localStorageUtils.removeItem('userData');
-        const response = await axios.get('http://localhost:3000/login/logout', {withCredentials:true});
+        const response = await axios.get(`${baseURL}/login/logout`, {withCredentials:true});
         console.log('response: ', response);
         navigate('/loginForm');
     }
